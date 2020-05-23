@@ -37,13 +37,22 @@ public class FlattenJson {
 	public static void main(String[] args) {
 		LinkedHashMap<String, String> jsonMap = new LinkedHashMap<String, String>();
 		String inputJson = "";
+		
 		// Read from pipe 
 		// e.g. "cat in.json | java FlattenJson"
 		if (args.length == 0){
 			Scanner sc = new Scanner(System.in);
-			while (sc.hasNextLine()) {
-    				inputJson += sc.nextLine();
-    			}
+			System.out.println("Press enter for not passing file as argument or pipe input and reading static input JSON");
+	        	inputJson = sc.nextLine();
+	        	// Read input string json rather than taking it as pipe input.
+			if(inputJson.isEmpty())
+				inputJson = input;
+			else {
+				// Read input json from pipe input
+				while (sc.hasNextLine()) {
+					inputJson += sc.nextLine();
+				}
+			}	
 		}
 		// Parsing JSON from string to JSONObject using json-simple-1.1.1.jar
 		JSONParser parser = new JSONParser();
