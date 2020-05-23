@@ -37,6 +37,8 @@ public class FlattenJson {
 	public static void main(String[] args) {
 		LinkedHashMap<String, String> jsonMap = new LinkedHashMap<String, String>();
 		String inputJson = "";
+		FileReader fileReader = null;
+		boolean isFileArg = false;
 		
 		// Read from pipe 
 		// e.g. "cat in.json | java FlattenJson"
@@ -53,12 +55,28 @@ public class FlattenJson {
 					inputJson += sc.nextLine();
 				}
 			}	
+		} else {
+			// Read from json file passed as command line argument
+			// e.g. "java FlattenJson in.json "
+			String fileName = args[0];
+			try {
+				System.out.println("Reading the JSON file passed as arg : " + fileName);
+				fileReader = new FileReader(fileName);
+				isFileArg = true;
+			} catch (FileNotFoundException ex) {
+				System.out.println("Unable to open file '" + fileName + "'");
+			}
 		}
-		// Parsing JSON from string to JSONObject using json-simple-1.1.1.jar
+		
+		// Parsing JSON from string/file to JSONObject using json-simple-1.1.1.jar
 		JSONParser parser = new JSONParser();
 		Object jsonObj = null;
 		try {
-			jsonObj = parser.parse(inputJson);
+			if(isFileArg)
+				jsonObj = parser.parse(fileReader);
+			else
+				jsonObj = parser.parse(inputJson);
+			
 			JSONObject jsonObject = (JSONObject) jsonObj;
 			populateJsonMap(jsonObject, jsonMap, null);
 			for (String key : jsonMap.keySet()) {
