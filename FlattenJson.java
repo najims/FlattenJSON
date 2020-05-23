@@ -1,4 +1,6 @@
+import java.io.*;
 import java.util.LinkedHashMap;
+import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -34,11 +36,20 @@ public class FlattenJson {
 
 	public static void main(String[] args) {
 		LinkedHashMap<String, String> jsonMap = new LinkedHashMap<String, String>();
+		String inputJson = "";
+		// Read from pipe 
+		// e.g. "cat in.json | java FlattenJson"
+		if (args.length == 0){
+			Scanner sc = new Scanner(System.in);
+			while (sc.hasNextLine()) {
+    				inputJson += sc.nextLine();
+    			}
+		}
 		// Parsing JSON from string to JSONObject using json-simple-1.1.1.jar
 		JSONParser parser = new JSONParser();
 		Object jsonObj = null;
 		try {
-			jsonObj = parser.parse(input);
+			jsonObj = parser.parse(inputJson);
 			JSONObject jsonObject = (JSONObject) jsonObj;
 			populateJsonMap(jsonObject, jsonMap, null);
 			for (String key : jsonMap.keySet()) {
