@@ -22,6 +22,15 @@ Flattened version of the JSON is stored in a map as key-value pair.
     e.g. - export CLASSPATH = $CLASSPATH:$JSON_JAVA/json-simple-1.1.1.jar
     
  =======================================================================================
+ 
+ Building FlattenJson.java :
+ 
+ 1. Make sure json-simple-1.1.1.jar is added to CLASSPATH(steps above).
+ 
+ 2. Build java solution as follows:
+    javac FlattenJson.java
+    
+ =======================================================================================
   
  Ways to run FlattenJson:
  1. Reading input JSON from pipe:
