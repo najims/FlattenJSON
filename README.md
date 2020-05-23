@@ -1,13 +1,13 @@
 # FlattenJSON
 PROBLEM : Write a program that takes a JSON object as input and outputs a flattened version of the JSON object, with keys as the path to every terminal value in the JSON structure. Output should be valid JSON.
 
-=====================================================================================================
+=======================================================================================
 
 SOLUTION:
 It takes a JSON(string) as input, parse into JSONObject using json-simple-1.1.1.jar and outputs a flattened version of the JSON object.
 Flattened version of the JSON is stored in a map as key-value pair.
 
-=====================================================================================================
+=======================================================================================
 
  Adding json-simple-1.1.1.jar to CLASSPATH:
  1. Download json-simple-1.1.1.jar from 
@@ -17,7 +17,7 @@ Flattened version of the JSON is stored in a map as key-value pair.
  3. Set the CLASSPATH environment variable to point to the JSON.simple jar location
     e.g. - export CLASSPATH = $CLASSPATH:$JSON_JAVA/json-simple-1.1.1.jar
     
- =====================================================================================================
+ =======================================================================================
   
  Ways to run FlattenJson:
  1. Reading input JSON from pipe:
@@ -30,4 +30,4 @@ Flattened version of the JSON is stored in a map as key-value pair.
  3. Reading the JSON file passed as command line argument.
     e.g. - java FlattenJson in.json
     
- ===================================================================================================== 
+ ========================================================================================
