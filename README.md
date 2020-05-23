@@ -28,6 +28,7 @@ Flattened version of the JSON is stored in a map as key-value pair.
  1. Make sure json-simple-1.1.1.jar is added to CLASSPATH(steps above).
  
  2. Build java solution as follows:
+ 
     javac FlattenJson.java
     
  =======================================================================================
